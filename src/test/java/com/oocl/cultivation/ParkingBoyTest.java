@@ -57,10 +57,10 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
-        ParkingTicket parkingTicket = parkingBoy.park(car);
+        parkingBoy.park(car);
 
         //when
-        Car fetchedCar = parkingBoy.fetch(parkingTicket);
+        Car fetchedCar = parkingBoy.fetch(new ParkingTicket());
 
         //then
         assertSame(null, fetchedCar);
