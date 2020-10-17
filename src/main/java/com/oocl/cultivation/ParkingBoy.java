@@ -12,6 +12,11 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return parkingLot.getTicketCarMap().get(parkingTicket);
+        if (parkingTicket.isUsed()) {
+            return null;
+        } else {
+            parkingTicket.setUsed(true);
+            return parkingLot.getTicketCarMap().get(parkingTicket);
+        }
     }
 }
