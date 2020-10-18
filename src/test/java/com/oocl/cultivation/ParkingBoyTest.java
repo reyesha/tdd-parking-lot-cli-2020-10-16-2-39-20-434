@@ -12,7 +12,7 @@ class ParkingBoyTest {
     void should_return_a_parking_ticket_when_parking_given_a_car_to_parking_boy() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
 
         //when
         ParkingTicket ticket = parkingBoy.park(car);
@@ -25,7 +25,7 @@ class ParkingBoyTest {
     void should_return_correct_car_when_fetching_given_a_correct_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
         //when
@@ -40,7 +40,7 @@ class ParkingBoyTest {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         ParkingTicket parkingTicket1 = parkingBoy.park(car1);
         ParkingTicket parkingTicket2 = parkingBoy.park(car2);
 
@@ -57,7 +57,7 @@ class ParkingBoyTest {
     void should_return_no_car_when_fetching_a_car_given_a_wrong_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         parkingBoy.park(car);
 
         //when
@@ -71,7 +71,7 @@ class ParkingBoyTest {
     void should_return_no_car_when_fetching_a_car_given_no_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         parkingBoy.park(car);
 
         //when
@@ -85,7 +85,7 @@ class ParkingBoyTest {
     void should_return_no_car_when_fetching_a_car_given_a_parking_ticket_been_used() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
         //when
@@ -101,7 +101,7 @@ class ParkingBoyTest {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
 
         //when
         parkingBoy.park(car1);
