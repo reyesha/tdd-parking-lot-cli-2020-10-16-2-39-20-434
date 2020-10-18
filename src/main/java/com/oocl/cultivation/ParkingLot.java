@@ -5,24 +5,32 @@ import java.util.Map;
 
 public class ParkingLot {
     int parkingLotCapacity;
+    int parkedCars;
 
     public ParkingLot(int parkingLotCapacity) {
         this.parkingLotCapacity = parkingLotCapacity;
     }
 
+    public int getParkingLotCapacity() {
+        return parkingLotCapacity;
+    }
+
     private final Map<ParkingTicket,Car> ticketCarMap = new HashMap<>();
-    public ParkingTicket park(Car car) throws NotEnoughPositionException {
+
+
+    public ParkingTicket park(Car car) {
         ParkingTicket ticket = new ParkingTicket();
 
-        if (ticketCarMap.size() == parkingLotCapacity){
-                throw new NotEnoughPositionException("Not enough position.");
-        }else {
-            ticketCarMap.put(ticket,car);
-            return ticket;
-        }
+        ticketCarMap.put(ticket,car);
+        parkedCars += 1;
+        return ticket;
     }
 
     public Map<ParkingTicket, Car> getTicketCarMap() {
         return ticketCarMap;
+    }
+
+    public int getParkedCars() {
+        return parkedCars;
     }
 }
