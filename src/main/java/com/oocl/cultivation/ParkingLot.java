@@ -11,15 +11,21 @@ public class ParkingLot {
     }
 
     private final Map<ParkingTicket,Car> ticketCarMap = new HashMap<>();
-    public ParkingTicket park(Car car) {
+    public ParkingTicket park(Car car) throws NotEnoughPositionException {
         ParkingTicket ticket = new ParkingTicket();
 
         if (ticketCarMap.size() == parkingLotCapacity){
-            return null;
+            try {
+
+            } catch (Exception e) {
+                throw new NotEnoughPositionException("Not enough position.");
+            }
         }else {
             ticketCarMap.put(ticket,car);
             return ticket;
         }
+
+        return null;
     }
 
     public Map<ParkingTicket, Car> getTicketCarMap() {
