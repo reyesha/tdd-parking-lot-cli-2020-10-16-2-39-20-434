@@ -106,5 +106,25 @@ class ParkingBoyTest {
         assertThrows(NotEnoughPositionException.class, () -> {parkingBoy.park(car2);});
     }
 
+    @Test
+    void should_return_park_cars_to_second_parking_when_parking_a_car_given_first_parking_is_full() throws Exception {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(2));
+        parkingLotList.add(new ParkingLot(3));
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
 
+        //when
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList, new NormalParkingStrategy());
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
+        parkingBoy.park(car3);
+
+        //then
+        assertEquals(2, parkingLotList.get(0).getParkedCars());
+        assertEquals(1, parkingLotList.get(1).getParkedCars());
+
+    }
 }
