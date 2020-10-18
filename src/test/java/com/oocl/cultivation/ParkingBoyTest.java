@@ -101,10 +101,9 @@ class ParkingBoyTest {
 
         //when
         parkingBoy.park(car1);
-        ParkingTicket parkingTicket = parkingBoy.park(car2);
 
         //then
-        assertNull(parkingTicket);
+        assertThrows(NotEnoughPositionException.class, () -> {parkingBoy.park(car2);});
     }
 
 
