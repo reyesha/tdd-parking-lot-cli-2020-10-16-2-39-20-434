@@ -16,13 +16,22 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException, ProvideParkingTicketException {
+        Car car = new Car();
         if (parkingTicket == null) {
                 throw new ProvideParkingTicketException("Please provide your parking ticket.");
         } else if (parkingTicket.isUsed()) {
                 throw new UnrecognizedParkingTicketException("Unrecognized Parking Ticket.");
         }
-            parkingTicket.setUsed(true);
-            return parkingLot.getTicketCarMap().get(parkingTicket);
+
+        for(ParkingLot lot : parkingLotList){
+            car = lot.getTicketCarMap().get(parkingTicket);
+            if (!(car == null)){
+                break;
+            }
+        }
+
+        parkingTicket.setUsed(true);
+        return car;
     }
 
 }
