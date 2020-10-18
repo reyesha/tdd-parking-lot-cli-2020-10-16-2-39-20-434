@@ -66,17 +66,16 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_no_car_when_fetching_a_car_given_no_ticket() throws UnrecognizedParkingTicketException, ProvideParkingTicketException, NotEnoughPositionException {
+    void should_return_no_car_when_fetching_a_car_given_no_ticket() throws Exception {
         //given
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
-        parkingBoy.park(car);
 
         //when
-        Car fetchedCar = parkingBoy.fetch(null);
+        parkingBoy.park(car);
 
         //then
-        assertSame(null, fetchedCar);
+        assertThrows(ProvideParkingTicketException.class, () -> {parkingBoy.fetch(null);});
     }
 
     @Test
