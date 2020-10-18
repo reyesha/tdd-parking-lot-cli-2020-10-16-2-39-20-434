@@ -25,9 +25,9 @@ public class ParkingBoy {
                 throw new UnrecognizedParkingTicketException("Unrecognized Parking Ticket.");
             }
         } else {
-        parkingTicket.setUsed(true);
-        return parkingLot.getTicketCarMap().get(parkingTicket);
-    }
+            parkingTicket.setUsed(true);
+            return parkingLot.getTicketCarMap().get(parkingTicket);
+        }
         return null;
     }
 
