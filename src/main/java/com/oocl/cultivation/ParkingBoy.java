@@ -12,7 +12,7 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        if (parkingTicket.isUsed()) {
+        if (parkingTicket == null || parkingTicket.isUsed()) {
             return null;
         } else {
             parkingTicket.setUsed(true);
