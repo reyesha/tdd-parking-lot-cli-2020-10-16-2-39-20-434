@@ -12,7 +12,7 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) throws Exception {
-        return parkingLot.park(car);
+        return parkingStrategy.park(this, car);
     }
 
     public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException, ProvideParkingTicketException {
