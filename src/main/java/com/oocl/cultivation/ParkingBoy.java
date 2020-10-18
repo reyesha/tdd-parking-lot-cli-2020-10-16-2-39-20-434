@@ -1,10 +1,14 @@
 package com.oocl.cultivation;
 
-public class ParkingBoy {
-    private final ParkingLot parkingLot;
+import java.util.List;
 
-    public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+public class ParkingBoy {
+    public List<ParkingLot> parkingLotList;
+    private ParkingStrategy parkingStrategy;
+
+    public ParkingBoy(List<ParkingLot> parkingLotList, ParkingStrategy parkingStrategy) {
+        this.parkingStrategy = parkingStrategy;
+        this.parkingLotList = parkingLotList;
     }
 
     public ParkingTicket park(Car car) throws Exception {
