@@ -11,12 +11,24 @@ public class ParkingBoy {
         return parkingLot.park(car);
     }
 
-    public Car fetch(ParkingTicket parkingTicket) {
-        if (parkingTicket == null || parkingTicket.isUsed()) {
-            return null;
+    public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException, ProvideParkingTicketException {
+        if (parkingTicket == null) {
+            try {
+
+            } catch (NullPointerException e) {
+                throw new ProvideParkingTicketException("Please provide your parking ticket.");
+            }
+        } else if (parkingTicket.isUsed()) {
+            try {
+
+            } catch (NullPointerException e) {
+                throw new UnrecognizedParkingTicketException("Unrecognized Parking Ticket.");
+            }
         } else {
-            parkingTicket.setUsed(true);
-            return parkingLot.getTicketCarMap().get(parkingTicket);
-        }
+        parkingTicket.setUsed(true);
+        return parkingLot.getTicketCarMap().get(parkingTicket);
     }
+        return null;
+    }
+
 }
