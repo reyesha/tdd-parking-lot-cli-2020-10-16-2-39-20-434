@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ParkingBoyTest {
 
     @Test
-    void should_return_a_parking_ticket_when_parking_given_a_car_to_parking_boy() {
+    void should_return_a_parking_ticket_when_parking_given_a_car_to_parking_boy() throws NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
@@ -20,7 +20,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_correct_car_when_fetching_given_a_correct_ticket() throws ProvideParkingTicketException, UnrecognizedParkingTicketException {
+    void should_return_correct_car_when_fetching_given_a_correct_ticket() throws ProvideParkingTicketException, UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
@@ -34,7 +34,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_two_cars_when_fetching_two_cars_with_corresponding_tickets_given_two_cars() throws ProvideParkingTicketException, UnrecognizedParkingTicketException {
+    void should_return_two_cars_when_fetching_two_cars_with_corresponding_tickets_given_two_cars() throws ProvideParkingTicketException, UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
@@ -52,7 +52,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_no_car_when_fetching_a_car_given_a_wrong_ticket() throws ProvideParkingTicketException, UnrecognizedParkingTicketException {
+    void should_return_no_car_when_fetching_a_car_given_a_wrong_ticket() throws ProvideParkingTicketException, UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
@@ -66,7 +66,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_no_car_when_fetching_a_car_given_no_ticket() throws UnrecognizedParkingTicketException, ProvideParkingTicketException {
+    void should_return_no_car_when_fetching_a_car_given_no_ticket() throws UnrecognizedParkingTicketException, ProvideParkingTicketException, NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
@@ -80,7 +80,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_no_car_when_fetching_a_car_given_a_parking_ticket_been_used() throws UnrecognizedParkingTicketException, ProvideParkingTicketException {
+    void should_return_no_car_when_fetching_a_car_given_a_parking_ticket_been_used() throws UnrecognizedParkingTicketException, ProvideParkingTicketException, NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
@@ -95,7 +95,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_return_park_car_failed_and_no_ticket_returned_when_parking_a_car_given_a_parking_lot_capacity_1() {
+    void should_return_park_car_failed_and_no_ticket_returned_when_parking_a_car_given_a_parking_lot_capacity_1() throws NotEnoughPositionException {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
