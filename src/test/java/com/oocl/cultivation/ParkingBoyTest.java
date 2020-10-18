@@ -2,6 +2,9 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
@@ -9,8 +12,10 @@ class ParkingBoyTest {
     @Test
     void should_return_a_parking_ticket_when_parking_given_a_car_to_parking_boy() throws Exception {
         //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(10));
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList, new NormalParkingStrategy());
 
         //when
         ParkingTicket ticket = parkingBoy.park(car);
@@ -22,8 +27,10 @@ class ParkingBoyTest {
     @Test
     void should_return_correct_car_when_fetching_given_a_correct_ticket() throws Exception {
         //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(10));
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList, new NormalParkingStrategy());
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
         //when
@@ -36,9 +43,11 @@ class ParkingBoyTest {
     @Test
     void should_return_two_cars_when_fetching_two_cars_with_corresponding_tickets_given_two_cars() throws Exception {
         //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(10));
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList, new NormalParkingStrategy());
         ParkingTicket parkingTicket1 = parkingBoy.park(car1);
         ParkingTicket parkingTicket2 = parkingBoy.park(car2);
 
@@ -54,8 +63,10 @@ class ParkingBoyTest {
     @Test
     void should_return_no_car_when_fetching_a_car_given_a_wrong_ticket() throws Exception {
         //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(10));
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList, new NormalParkingStrategy());
         parkingBoy.park(car);
 
         //when
@@ -68,8 +79,10 @@ class ParkingBoyTest {
     @Test
     void should_return_no_car_when_fetching_a_car_given_no_ticket() throws Exception {
         //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(10));
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList, new NormalParkingStrategy());
 
         //when
         parkingBoy.park(car);
@@ -81,9 +94,12 @@ class ParkingBoyTest {
     @Test
     void should_return_no_car_when_fetching_a_car_given_a_parking_ticket_been_used() throws Exception {
         //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList, new NormalParkingStrategy());
+        ParkingTicket parkingTicket = new ParkingTicket();
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
-        ParkingTicket parkingTicket = parkingBoy.park(car);
+        parkingBoy.park(car);
 
         //when
         parkingTicket.setUsed(true);
@@ -97,7 +113,9 @@ class ParkingBoyTest {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(1));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList, new NormalParkingStrategy());
 
         //when
         parkingBoy.park(car1);
